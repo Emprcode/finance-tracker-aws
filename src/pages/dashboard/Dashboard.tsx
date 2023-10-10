@@ -1,9 +1,9 @@
 import { MainLayout } from "../../components/layout/mainLayout/MainLayout"
 
-const Homepage = () => {
+const Dashboard = () => {
   return (
     <MainLayout>Homepage</MainLayout>
   )
 }
 
-export default Homepage
+export default Dashboard

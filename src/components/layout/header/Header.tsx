@@ -10,7 +10,7 @@ export const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Link to="/" >
+            <Link to="/" className='nav-link' >
               <span className='fw-bold'>
 
               <FiLogOut size={20} />

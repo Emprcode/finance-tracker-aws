@@ -1,6 +1,14 @@
+import { Form, FormProps } from "react-bootstrap";
 
-export const FormComponents = () => {
+interface FormComponentsProps extends FormProps {
+  label: string;
+}
+export const FormComponents: React.FC<FormComponentsProps> = ({ label, ...rest }) => {
   return (
-    <div>FormComponents</div>
+    <Form.Group className="mb-3" >
+        <Form.Label>{label}</Form.Label>
+        {/* <Form.Control {...rest} /> */}
+
+      </Form.Group>
   )
 }
