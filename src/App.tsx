@@ -3,7 +3,7 @@ import './App.css'
 import Dashboard from './pages/dashboard/Dashboard'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
-
+import React from 'react'
 function App() {
   return (
     <BrowserRouter>
