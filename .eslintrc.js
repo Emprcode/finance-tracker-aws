@@ -35,8 +35,8 @@ module.exports = {
         'plugin:prettier/recommended',
       ],
       rules: {
-        'react/jsx-uses-react': 'off',
-        "react/react-in-jsx-scope": "off",
+        'react/jsx-uses-react': 'error',
+        'react/react-in-jsx-scope': 'error',
         'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
         '@typescript-eslint/no-unused-vars': [
           'error',

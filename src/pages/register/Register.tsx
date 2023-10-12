@@ -5,6 +5,7 @@ import { BiArrowBack } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 import { FormComponents } from '../../components/formComponents/FormComponents'
 import './Register.css'
+import React from 'react'
 const Register = () => {
   const inputs = [
     {

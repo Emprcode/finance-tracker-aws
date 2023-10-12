@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form'
 import { Link } from 'react-router-dom'
 import { FormComponents } from '../../components/formComponents/FormComponents'
 import './Login.css'
+import React from 'react'
 const Login = () => {
   const inputs = [
     {

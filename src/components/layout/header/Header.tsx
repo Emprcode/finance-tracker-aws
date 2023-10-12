@@ -1,7 +1,7 @@
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { FiLogOut } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
-
+import React from 'react'
 export const Header = () => {
   return (
     <Navbar expand='md' className='bg-body-tertiary'>
