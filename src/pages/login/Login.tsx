@@ -1,11 +1,19 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FormComponents } from '../../components/formComponents/FormComponents'
 import './Login.css'
-import React from 'react'
+import { Auth } from 'aws-amplify'
+
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import { SignInProps } from '../../lib/types'
+import { validUserSession } from '../../utils/utils'
 const Login = () => {
+  useEffect(() => {
+    validUserSession()
+  }, [])
+  const navigate = useNavigate()
   const inputs = [
     {
       label: 'Email',
@@ -21,6 +29,26 @@ const Login = () => {
     },
   ]
 
+  const [form, setForm] = useState<SignInProps>({ email: '', password: '' })
+
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setForm({
+      ...form,
+      [name]: value,
+    })
+  }
+
+  const signIn = async (event: FormEvent<HTMLFormElement>) => {
+    try {
+      event.preventDefault()
+      const { email, password } = form
+      await Auth.signIn(email, password)
+      navigate('/dashboard')
+    } catch (error) {
+      // console.log('error signing in', error)
+    }
+  }
   return (
     <Container className='dash-height d-flex justify-content-center align-items-center'>
       <Row className='shadow-lg p-5'>
@@ -33,9 +61,9 @@ const Login = () => {
           <h5>Login</h5>
           <hr />
 
-          <Form>
+          <Form onSubmit={signIn}>
             {inputs.map((item, i) => (
-              <FormComponents key={i} {...item} />
+              <FormComponents key={i} {...item} onChange={handleOnChange} />
             ))}
 
             <Button variant='primary' type='submit' className='rounded-pill mt-3 fw-bold'>
