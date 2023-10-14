@@ -15,9 +15,9 @@ module.exports = {
   },
   extends: ['eslint:recommended', 'prettier'],
   rules: {
-    'no-console': 'error',
+    'no-console': 'off',
     "prettier/prettier": ["error",{
-      "endOfLine": "auto"}
+      "endOfLine": "lf"}
     ]
   },
   overrides: [

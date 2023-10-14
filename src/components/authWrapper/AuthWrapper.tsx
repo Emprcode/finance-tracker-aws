@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom'
 import { validUserSession } from '../../utils/utils'
 
 export const AuthWrapper = ({ children }: React.HTMLAttributes<HTMLDivElement>) => {
-  const [session, setSession] = useState(false)
+  const [session, setSession] = useState<boolean | undefined>()
   const location = useLocation()
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export const AuthWrapper = ({ children }: React.HTMLAttributes<HTMLDivElement>) 
 
     resp()
   }, [])
-  if (!session) {
+  if (session === false) {
     //redirext to login page
     return <Navigate to='/' replace state={{ from: location }} />
   }
