@@ -7,11 +7,8 @@ export interface FormFieldProps {
   required: boolean
   onChange?(event: ChangeEvent<HTMLInputElement>): void
 }
-export interface HeaderProps {
-  isLoggedIn: boolean
-}
 
-export interface SignInProps {
+export interface LoginProps {
   email: string
   password: string
 }

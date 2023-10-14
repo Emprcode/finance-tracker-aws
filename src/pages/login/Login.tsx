@@ -5,10 +5,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FormComponents } from '../../components/formComponents/FormComponents'
 import './Login.css'
 import { Auth } from 'aws-amplify'
-
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
-import { SignInProps } from '../../lib/types'
+import { LoginProps } from '../../lib/types'
 import { validUserSession } from '../../utils/utils'
+
 const Login = () => {
   useEffect(() => {
     validUserSession()
@@ -29,7 +29,7 @@ const Login = () => {
     },
   ]
 
-  const [form, setForm] = useState<SignInProps>({ email: '', password: '' })
+  const [form, setForm] = useState<LoginProps>({ email: '', password: '' })
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
