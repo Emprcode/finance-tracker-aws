@@ -9,7 +9,7 @@ export const Header = () => {
 
   return (
     <Navbar expand='md' className='bg-body-tertiary'>
-      <Container className=''>
+      <Container className='p-2'>
         <Navbar.Brand href='/' className='h1 fw-bold'>
           AWS FT
         </Navbar.Brand>
