@@ -9,10 +9,8 @@ export const CardComponents = (props: Transaction) => {
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>
           <h5>{props.amount}</h5>
-          {/* <span>{props.type}</span> */}
         </Card.Text>
         <Card.Text>
-          {/* <h5>{props.amount}</h5> */}
           <span>{props.type}</span>
         </Card.Text>
       </Card.Body>
