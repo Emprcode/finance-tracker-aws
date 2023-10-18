@@ -12,3 +12,9 @@ export interface LoginProps {
   email: string
   password: string
 }
+export interface Transaction {
+  type: string
+  id: string
+  amount: string
+  name: string
+}
