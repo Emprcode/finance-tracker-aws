@@ -18,3 +18,7 @@ export interface Transaction {
   amount: string
   name: string
 }
+
+export interface AxiosInterface {
+  baseUrl: string
+}

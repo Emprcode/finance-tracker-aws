@@ -1,10 +1,21 @@
 import { Container, Row } from 'react-bootstrap'
 import { MainLayout } from '../../components/layout/mainLayout/MainLayout'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CardComponents } from '../../components/card/CardComponents'
 import { data } from '../../lib/dummyData'
+import { getAllTransactions } from '../../components/helper/AxiosHelper'
 
 const Dashboard = () => {
+  // const [transactions, setTransactions] = useState([])
+
+  useEffect(() => {
+    getTransaction()
+  }, [])
+  const getTransaction = async () => {
+    const result = await getAllTransactions()
+    console.log(result)
+  }
+
   return (
     <MainLayout>
       <Container className='p-3'>
