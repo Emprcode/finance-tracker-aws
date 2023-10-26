@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { baseURL } from '../../config'
 
-const baseURL= process.env.REACT_APP_BASEURL!
+
 //get Authorization header
 const getUserToken = () => {
   const userToken = sessionStorage.getItem('userToken')
