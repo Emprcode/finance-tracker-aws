@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { baseURL } from '../../config'
 
+const baseURL= process.env.REACT_APP_BASEURL!
 //get Authorization header
 const getUserToken = () => {
   const userToken = sessionStorage.getItem('userToken')
@@ -24,8 +24,8 @@ export const getAllTransactions = async () => {
       },
     })
 
-    console.log(response)
-    return response
+    console.log(response.data)
+    return response.data
   } catch (error) {
     return error
   }
