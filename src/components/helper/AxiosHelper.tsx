@@ -5,11 +5,7 @@ import { baseURL } from '../../config'
 const apiEp = baseURL + '/transactions'
 
 //get Authorization header
-const getUserToken = () => {
-  const userToken = sessionStorage.getItem('token')
-
-  return userToken
-}
+const getUserToken = () => sessionStorage.getItem('token')
 
 export const getAllTransactions = async () => {
   try {
