@@ -11,10 +11,7 @@ export const getAllTransactions = async () => {
   try {
     const user = getUserToken()
     if (!user) {
-      return {
-        status: 'error',
-        message: 'login first',
-      }
+      throw new Error('Token does not exist!')
     }
     const { data } = await axios.get(apiEp, {
       headers: {
@@ -32,10 +29,7 @@ export const postTransaction = async (payload: TransactionPayload) => {
   try {
     const user = getUserToken()
     if (!user) {
-      return {
-        status: 'error',
-        message: 'Login first',
-      }
+      throw new Error('Token does not exist!')
     }
     const { data } = await axios.post(apiEp, payload, {
       headers: {
@@ -52,10 +46,7 @@ export const deleteTransaction = async (transactionId: string) => {
   try {
     const user = getUserToken()
     if (!user) {
-      return {
-        status: 'error',
-        message: 'Login first',
-      }
+      throw new Error('Token does not exist!')
     }
     const { data } = await axios.delete(apiEp, {
       data: transactionId,
