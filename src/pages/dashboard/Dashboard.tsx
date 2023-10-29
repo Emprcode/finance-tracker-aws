@@ -14,6 +14,7 @@ const Dashboard = () => {
   }, [])
   const getTransaction = async () => {
     const result = await getAllTransactions()
+    console.log(result)
     setTransactions(result)
   }
   console.log(transactions)

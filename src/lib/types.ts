@@ -19,6 +19,4 @@ export interface Transaction {
   name: string
 }
 
-export interface AxiosInterface {
-  baseUrl: string
-}
+export type TransactionPayload = Omit<Transaction, 'transactionId'>
