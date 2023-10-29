@@ -6,7 +6,7 @@ const apiEp = baseURL + '/transactions'
 
 //get Authorization header
 const getUserToken = () => {
-  const userToken = sessionStorage.getItem('userToken')
+  const userToken = sessionStorage.getItem('token')
   const userObj = userToken ? JSON.parse(userToken) : null
   return userObj
 }
