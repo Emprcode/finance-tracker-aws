@@ -35,7 +35,9 @@ export const DeleteModal = (props: Transaction) => {
           </Button>
         </Modal.Footer>
       </Modal>
-      <AiFillDelete size={25} onClick={handleShow} />
+      <div className='cursor'>
+        <AiFillDelete size={25} onClick={handleShow} />
+      </div>
     </>
   )
 }

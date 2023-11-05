@@ -28,7 +28,9 @@ export const AddTransaction = () => {
   }
   return (
     <>
-      <BsFilePlus onClick={handleShow} size={35} />
+      <div className='cursor'>
+        <BsFilePlus onClick={handleShow} size={35} />
+      </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
