@@ -15,7 +15,7 @@ export interface LoginProps {
 export interface Transaction {
   type: string
   transactionId: string
-  amount: string
+  amount: number
   name: string
 }
 

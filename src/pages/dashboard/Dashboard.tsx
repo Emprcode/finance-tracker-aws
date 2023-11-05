@@ -14,10 +14,28 @@ const Dashboard = () => {
   }, [])
   const getTransaction = async () => {
     const result = await getAllTransactions()
-    console.log(result)
     setTransactions(result)
   }
-  console.log(transactions)
+
+  const total = transactions?.reduce(
+    (acc, transaction) =>
+      transaction.type === 'income' ? acc + +transaction.amount : acc - +transaction.amount,
+    0,
+  )
+
+  const incomeTotal = transactions?.reduce((acc, item) => {
+    if (item.type === 'income') {
+      return acc + +item.amount
+    }
+    return acc
+  }, 0)
+
+  const expenseTotal = transactions?.reduce((acc, item) => {
+    if (item.type === 'expense') {
+      return acc + +item.amount
+    }
+    return acc
+  }, 0)
 
   return (
     <MainLayout>
@@ -36,28 +54,29 @@ const Dashboard = () => {
             <Card style={{ width: '18rem' }}>
               <Card.Body>
                 <h6 className='text-center'>Total Balance</h6>
-                <Card.Title className='text-center h1 p-2'>$10000</Card.Title>
+                <Card.Title className='text-center h1 p-2'>{total}</Card.Title>
 
                 <div className='d-flex justify-content-around'>
                   <Card.Subtitle className='mb-2 text-success'>
                     <h6>Income </h6>
-                    <h6>$20000 </h6>
+                    <h6>{incomeTotal} </h6>
                   </Card.Subtitle>
                   <Card.Subtitle className='mb-2 text-danger'>
                     <h6>Expense</h6>
-                    <h6>$10000</h6>
+                    <h6>{expenseTotal}</h6>
                   </Card.Subtitle>
                 </div>
               </Card.Body>
             </Card>
           </div>
         </Row>
-        <Row className='mt-4 gap-5'>
+        <Row className='mt-4  gap-5'>
           <h2 className='text-center'>Transactions</h2>
-
-          <Row className='d-flex gap-4'>
-            {transactions?.map((item, i) => <CardComponents key={i} {...item} />)}
-          </Row>
+          <div className='d-flex justify-content-center align-items-center'>
+            <Row className='gap-3 col-8'>
+              {transactions?.map((item, i) => <CardComponents key={i} {...item} />)}
+            </Row>
+          </div>
         </Row>
       </Container>
     </MainLayout>

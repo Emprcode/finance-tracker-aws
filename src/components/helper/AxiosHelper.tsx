@@ -5,20 +5,22 @@ import { baseURL } from '../../config'
 const apiEp = baseURL + '/transactions'
 
 //get Authorization header
-const getUserToken = () => sessionStorage.getItem('token')
-
+const getUserToken = () => {
+  const token = sessionStorage.getItem('token')
+  if (!token) {
+    throw new Error('Token does not exist!')
+  }
+  console.log(token)
+  return token
+}
 export const getAllTransactions = async () => {
   try {
-    const user = getUserToken()
-    if (!user) {
-      throw new Error('Token does not exist!')
-    }
+    const token = getUserToken()
     const { data } = await axios.get(apiEp, {
       headers: {
-        Authorization: `Bearer ${user}`,
+        Authorization: `Bearer ${token}`,
       },
     })
-
     return data
   } catch (error) {
     console.log(error)
@@ -27,13 +29,10 @@ export const getAllTransactions = async () => {
 
 export const postTransaction = async (payload: TransactionPayload) => {
   try {
-    const user = getUserToken()
-    if (!user) {
-      throw new Error('Token does not exist!')
-    }
+    const token = getUserToken()
     const { data } = await axios.post(apiEp, payload, {
       headers: {
-        Authorization: `Bearer ${user}`,
+        Authorization: `Bearer ${token}`,
       },
     })
     console.log(data)
@@ -44,14 +43,11 @@ export const postTransaction = async (payload: TransactionPayload) => {
 }
 export const deleteTransaction = async (transactionId: string) => {
   try {
-    const user = getUserToken()
-    if (!user) {
-      throw new Error('Token does not exist!')
-    }
+    const token = getUserToken()
     const { data } = await axios.delete(apiEp, {
       data: transactionId,
       headers: {
-        Authorization: `Bearer ${user}`,
+        Authorization: `Bearer ${token}`,
       },
     })
     console.log(data)
