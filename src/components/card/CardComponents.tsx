@@ -5,7 +5,6 @@ import { Col, Row } from 'react-bootstrap'
 import { DeleteModal } from '../deleteModal/DeleteModal'
 
 export const CardComponents = (props: Transaction) => {
-  console.log(props.transactionId)
   return (
     <Card className=' bg-light'>
       <Row className='p-4 d-flex justify-content-center '>

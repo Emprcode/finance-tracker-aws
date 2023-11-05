@@ -40,18 +40,18 @@ const Dashboard = () => {
     }
     return acc
   }, 0)
-
+  const name = sessionStorage.getItem('name')
   return (
     <MainLayout>
       <Container className='p-3'>
         <Row className='p-4'>
-          <div className='d-flex align-items-center gap-4'>
+          <div className='d-flex align-items-center gap-4 p-3'>
             <span>
               <FaUserAlt size={30} />
             </span>
             <div>
               <h4>Welcome!</h4>
-              <h4>John</h4>
+              <h4>{name}</h4>
             </div>
           </div>
           <div className='d-flex justify-content-center '>
