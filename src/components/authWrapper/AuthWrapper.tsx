@@ -13,6 +13,7 @@ export const AuthWrapper = ({ children }: React.HTMLAttributes<HTMLDivElement>) 
 
     resp()
   }, [])
+
   if (session === false) {
     //redirext to login page
     return <Navigate to='/' replace state={{ from: location }} />

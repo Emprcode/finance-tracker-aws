@@ -14,7 +14,9 @@ export interface LoginProps {
 }
 export interface Transaction {
   type: string
-  id: string
+  transactionId: string
   amount: string
   name: string
 }
+
+export type TransactionPayload = Omit<Transaction, 'transactionId'>

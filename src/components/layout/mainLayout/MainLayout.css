@@ -1,5 +1,4 @@
 .main{
-    background: rgb(146, 172, 203);
-        background: radial-gradient(circle, rgba(146, 172, 203, 0.21612394957983194) 64%, rgba(128, 117, 149, 0.4543942577030813) 98%);
+    background: rgba(189, 188, 193, 0.735);
     min-height: 80vh;
 }
