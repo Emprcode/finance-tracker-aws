@@ -10,17 +10,19 @@ const getUserToken = () => {
   if (!token) {
     throw new Error('Token does not exist!')
   }
-  console.log(token)
+  // console.log(token)
   return token
 }
 export const getAllTransactions = async () => {
   try {
     const token = getUserToken()
+
     const { data } = await axios.get(apiEp, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
+
     return data
   } catch (error) {
     console.log(error)
@@ -30,12 +32,12 @@ export const getAllTransactions = async () => {
 export const postTransaction = async (payload: TransactionPayload) => {
   try {
     const token = getUserToken()
+
     const { data } = await axios.post(apiEp, payload, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    console.log(data)
     return data
   } catch (error) {
     console.log(error)
@@ -44,12 +46,17 @@ export const postTransaction = async (payload: TransactionPayload) => {
 export const deleteTransaction = async (transactionId: string) => {
   try {
     const token = getUserToken()
+
+    const requestBody = {
+      transactionId: transactionId,
+    }
     const { data } = await axios.delete(apiEp, {
-      data: transactionId,
+      data: requestBody,
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
+
     console.log(data)
     return data
   } catch (error) {

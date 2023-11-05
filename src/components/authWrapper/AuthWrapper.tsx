@@ -10,7 +10,6 @@ export const AuthWrapper = ({ children }: React.HTMLAttributes<HTMLDivElement>) 
     const resp = async () => {
       setSession(await validUserSession())
     }
-
     resp()
   }, [])
 
