@@ -12,9 +12,11 @@ export interface LoginProps {
   email: string
   password: string
 }
+
 export interface Transaction {
   type: string
   transactionId: string
+  // amount: number
   amount: string
   name: string
 }
