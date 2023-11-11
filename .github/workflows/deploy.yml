@@ -23,4 +23,4 @@ jobs:
           node-version: '18.x'
       - run: npm ci
       - run: npm run build --if-present
-      - run: aws s3 sync ./build s3://${{ vars.DEPLOY_BUCKET }} --dryrun
+      - run: aws s3 sync ./build s3://${{ vars.DEPLOY_BUCKET }} --delete
