@@ -5,6 +5,8 @@ on:
       - main
 env:
   AWS_REGION: ap-southeast-2
+  REACT_APP_COGNITO_USER_POOL_ID: ${{ vars.REACT_APP_COGNITO_USER_POOL_ID }}
+  REACT_APP_COGNITO_USER_POOL_APP_CLIENT_ID: ${{ vars.REACT_APP_COGNITO_USER_POOL_APP_CLIENT_ID }}
 jobs:
   build:
     environment: dev
