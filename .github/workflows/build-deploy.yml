@@ -27,7 +27,7 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - name: Configure AWS credentials from Test account
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.IAM_ROLE }}
@@ -37,4 +37,6 @@ jobs:
           name: build
           path: ./build
       - run: ls
-      - run: aws s3 sync ./build s3://${{ vars.DEPLOY_BUCKET }} --delete
+      - run: |-
+          DEPLOY_BUCKET=$(aws ssm get-parameter --name ${{ vars.BUCKET_PARAM }} --query Parameter.Value --output text)
+          aws s3 sync ./build s3://$DEPLOY_BUCKET --delete
