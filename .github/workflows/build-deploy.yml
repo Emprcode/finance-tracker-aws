@@ -5,6 +5,8 @@ on:
       - main
 env:
   AWS_REGION: ap-southeast-2
+  # REACT_APP_COGNITO_USER_POOL_ID: ${{ vars.COGNITO_USER_POOL_ID }}
+  # REACT_APP_COGNITO_USER_POOL_APP_CLIENT_ID: ${{ vars.COGNITO_USER_POOL_APP_CLIENT_ID }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,6 +17,7 @@ jobs:
         with:
           node-version: '18.x'
       - run: npm ci
+      - run: printenv
       - run: npm run build --if-present
       - uses: actions/upload-artifact@v3
         with:
