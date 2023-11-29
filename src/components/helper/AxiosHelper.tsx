@@ -2,7 +2,7 @@ import axios from 'axios'
 import { TransactionPayload } from '../../lib/types'
 import { baseURL } from '../../config'
 
-const apiEp = baseURL + '/transactions'
+const apiEp = baseURL + 'transactions'
 
 //get Authorization header
 const getUserToken = () => {
