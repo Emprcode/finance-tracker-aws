@@ -1,4 +1,4 @@
-name: Finance Tracker Deploy AWS
+name: Deploy
 on:
   push:
     branches:
