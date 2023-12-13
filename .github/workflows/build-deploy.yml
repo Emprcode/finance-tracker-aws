@@ -1,4 +1,4 @@
-name: Finance Tracker Deploy AWS
+name: Deploy
 on:
   push:
     branches:
@@ -35,9 +35,51 @@ jobs:
         with:
           name: build
           path: ./build
-  deploy:
+  deploy-dev:
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.IAM_ROLE }}
+          aws-region: ap-southeast-2
+      - uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: ./build
+      - run: ls
+      - run: |-
+          DEPLOY_BUCKET=$(aws ssm get-parameter --name ${{ vars.BUCKET_PARAM }} --query Parameter.Value --output text)
+          aws s3 sync ./build s3://$DEPLOY_BUCKET --delete
+
+  deploy-staging:
+    runs-on: ubuntu-latest
+    needs: deploy-dev
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.IAM_ROLE }}
+          aws-region: ap-southeast-2
+      - uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: ./build
+      - run: ls
+      - run: |-
+          DEPLOY_BUCKET=$(aws ssm get-parameter --name ${{ vars.BUCKET_PARAM }} --query Parameter.Value --output text)
+          aws s3 sync ./build s3://$DEPLOY_BUCKET --delete
+
+  deploy-prod:
+    runs-on: ubuntu-latest
+    needs: deploy-staging
     permissions:
       id-token: write
       contents: read
